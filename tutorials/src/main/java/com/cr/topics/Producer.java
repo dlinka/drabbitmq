@@ -21,8 +21,7 @@ public class Producer {
             Random random = new Random();
             for (int i = 0; i < 50; i++) {
                 int r = random.nextInt(5);
-                String msg = r + "hello" + i;
-                channel.basicPublish(Exchange.TOPICS_EXCHANGE.name(), r + ".hello", null, msg.getBytes());
+                channel.basicPublish(Exchange.TOPICS_EXCHANGE.name(), (r + ".topics"), null, (r + " " + i).getBytes());
             }
         } catch (TimeoutException e) {
             e.printStackTrace();
