@@ -18,7 +18,7 @@ public class RabbitMQConnection {
             synchronized (RabbitMQConnection.class) {
                 if (connection == null) {
                     ConnectionFactory factory = new ConnectionFactory();
-                    factory.setHost("120.77.87.89");
+                    factory.setHost("127.0.0.1");
                     factory.setPort(5672);
                     factory.setUsername("cr");
                     factory.setPassword("123456");
