@@ -1,4 +1,4 @@
-package com.cr.config;
+package com.cr.asynProcess;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

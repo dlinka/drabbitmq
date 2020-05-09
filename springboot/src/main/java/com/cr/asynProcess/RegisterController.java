@@ -16,5 +16,4 @@ public class RegisterController {
         amqpTemplate.convertAndSend("user_register_success_exchange", "", "userId:27");
         return "ok";
     }
-
 }
