@@ -15,10 +15,8 @@ public class Producer {
                 Connection connection = RabbitMQConnection.getInstance();
                 Channel channel = connection.createChannel()
         ) {
-            //声明队列
-            channel.queueDeclare(Queue.SIMPLE_QUEUE.name(), false, false, false, null);
-            //发送消息
-            channel.basicPublish("", Queue.SIMPLE_QUEUE.name(), null, "hello".getBytes());
+            channel.queueDeclare(Queue.SIMPLE_QUEUE.name(), false, false, false, null); //声明队列
+            channel.basicPublish("", Queue.SIMPLE_QUEUE.name(), null, "hello".getBytes()); //发送消息
         } catch (TimeoutException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -14,8 +14,7 @@ public class Consumer {
         Connection connection = RabbitMQConnection.getInstance();
         try {
             Channel channel = connection.createChannel();
-            //回调函数
-            DeliverCallback deliverCallback = (consumerTag, delivery) -> System.out.println(new String(delivery.getBody()));
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> System.out.println(new String(delivery.getBody())); //回调函数
             channel.basicConsume(Queue.SIMPLE_QUEUE.name(), true, deliverCallback, consumerTag -> {});
         } catch (IOException e) {
             e.printStackTrace();
