@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cr.mapper.MessageMapper">
+    <select id="getMessageByMsgId" resultType="com.cr.entity.Message">
+        SELECT * FROM message WHERE msg_id = #{msgId}
+    </select>
+
+    <select id="getUnConfirmMessage" resultType="com.cr.entity.Message">
+        SELECT * FROM message WHERE status = 0 AND try_time &lt; now()
+    </select>
+
+    <insert id="saveMessage">
+        INSERT INTO message(msg_id, uid, exchange, routing_key, try_time, create_time)
+        VALUES (#{msgId}, #{uid}, #{exchange}, #{routingKey}, #{tryTime}, now())
+    </insert>
+    
+    <update id="updateMessageStatus">
+        UPDATE message SET status = #{status} WHERE msg_id = #{msgId}
+    </update>
+    
+    <update id="updateMessageTryCount">
+        UPDATE message SET try_count = try_count + 1 WHERE msg_id = #{msgId}
+    </update>
+</mapper>
