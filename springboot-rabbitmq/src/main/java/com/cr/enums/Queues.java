@@ -1,5 +1,5 @@
 package com.cr.enums;
 
-public enum Queues {
-    USER_QUEUE
+public class Queues {
+    public final static String USER_QUEUE = "USER_QUEUE";
 }

@@ -1,10 +1,10 @@
 package com.cr.enums;
 
 public enum MessageStatus {
-
     UNCONFIRM((byte) 0),
     CONFIRM((byte) 1),
-    FAILURE((byte) 2);
+    FAILURE((byte) 2),
+    CONSUMED((byte) 3);
 
     private Byte status;
 

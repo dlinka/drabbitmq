@@ -1,7 +1,7 @@
 package com.cr.enums;
 
-public enum RoutingKeys {
+public class RoutingKeys {
 
-    user
+    public final static String USER = "USER";
 
 }

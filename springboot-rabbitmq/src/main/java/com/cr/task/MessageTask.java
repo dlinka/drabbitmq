@@ -6,8 +6,8 @@ import com.cr.enums.MessageStatus;
 import com.cr.enums.RoutingKeys;
 import com.cr.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -36,7 +36,7 @@ public class MessageTask {
             } else {
                 log.info("消息重试发送 - msgId:{}", message.getMsgId());
                 messageService.updateMessageTryCount(message.getMsgId());
-                rabbitTemplate.convertAndSend(Exchanges.USER_EXCHANGE.name(), RoutingKeys.user.name(), message.getUid(), new CorrelationData(message.getMsgId()));
+                rabbitTemplate.convertAndSend(Exchanges.USER_EXCHANGE, RoutingKeys.USER, message.getUid(), new CorrelationData(message.getMsgId()));
             }
         });
     }

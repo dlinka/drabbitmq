@@ -1,7 +1,7 @@
 package com.cr.enums;
 
-public enum Exchanges {
+public class Exchanges {
 
-    USER_EXCHANGE
+    public final static String USER_EXCHANGE = "USER_EXCHANGE";
 
 }
