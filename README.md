@@ -1,20 +1,15 @@
 # 🐰🐇drabbitmq
 
-## AMQP源码解析
+# AMQP源码解析
 
-[AMQP源码解析一-CachingConnectionFactory](https://github.com/dlinka/drabbitmq/issues/6)
+* [AMQP源码解析一-CachingConnectionFactory](https://github.com/dlinka/drabbitmq/issues/6)
+* [AMQP源码解析二-RabbitAdmin](https://github.com/dlinka/drabbitmq/issues/7)
+* [AMQP源码解析三-RabbitTemplate](https://github.com/dlinka/drabbitmq/issues/8)
+* [AMQP源码解析四-连接的创建](https://github.com/dlinka/drabbitmq/issues/9)
+* [AMQP源码解析五-信道的创建](https://github.com/dlinka/drabbitmq/issues/10)
+* [AMQP源码解析六-信道和连接关闭](https://github.com/dlinka/drabbitmq/issues/11)
 
-[AMQP源码解析二-RabbitAdmin](https://github.com/dlinka/drabbitmq/issues/7)
-
-[AMQP源码解析三-RabbitTemplate](https://github.com/dlinka/drabbitmq/issues/8)
-
-[AMQP源码解析四-连接的创建](https://github.com/dlinka/drabbitmq/issues/9)
-
-[AMQP源码解析五-信道的创建](https://github.com/dlinka/drabbitmq/issues/10)
-
-[AMQP源码解析六-信道和连接关闭](https://github.com/dlinka/drabbitmq/issues/11)
-
-## Spring Boot整合RabbitMQ
+# Spring Boot整合RabbitMQ
 
     Module:springboot-rabbitmq
 
@@ -29,4 +24,9 @@
     幂等性:Redis
 
 ---
-        
+
+如果我的博客中有任何问题,可以通过Issues给我留言,我会第一时间回复,请你喝哈啤🍺🍺🍺
+
+如果你想学习技术💰💰💰,或者你有什么好的idea💡💡💡,可以加微信与我们探讨🐒🐒🐒
+
+![image](https://user-images.githubusercontent.com/4274041/82111702-89fb3480-9779-11ea-97a9-c1ee1ee4e7be.png)     
