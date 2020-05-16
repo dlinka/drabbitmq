@@ -29,4 +29,4 @@
 
 如果你想学习技术💰💰💰,或者你有什么好的idea💡💡💡,可以加微信与我们探讨🐒🐒🐒
 
-![image](https://user-images.githubusercontent.com/4274041/82111702-89fb3480-9779-11ea-97a9-c1ee1ee4e7be.png)     
+<img width="150" height="150" src="https://user-images.githubusercontent.com/4274041/82111702-89fb3480-9779-11ea-97a9-c1ee1ee4e7be.png"/>
