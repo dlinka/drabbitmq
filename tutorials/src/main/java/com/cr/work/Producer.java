@@ -1,7 +1,7 @@
-package com.cr.fairDispatch;
+package com.cr.work;
 
-import com.cr.Queue;
 import com.cr.RabbitMQConnection;
+import com.cr.constant.Queue;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -12,25 +12,22 @@ import java.util.concurrent.TimeoutException;
 
 public class Producer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, TimeoutException {
         try (
                 Connection connection = RabbitMQConnection.getInstance();
                 Channel channel = connection.createChannel()
         ) {
-            boolean durable = true; //队列持久化
-            channel.queueDeclare(Queue.WORK_FAIR_DISPATCH_QUEUE.name(), durable, false, false, null);
+            //队列持久化
+            boolean durable = true;
+            channel.queueDeclare(Queue.WORK_QUEUE.name(), durable, false, false, null);
 
-            StringBuffer sb = new StringBuffer("hello ");
             for (int i = 0; i != 50; ++i) {
-                sb.append(i);
+                String message = "message:" + i;
+
                 //消息持久化
                 AMQP.BasicProperties persistentTextPlain = MessageProperties.PERSISTENT_TEXT_PLAIN;
-                channel.basicPublish("", Queue.WORK_FAIR_DISPATCH_QUEUE.name(), persistentTextPlain, sb.toString().getBytes());
+                channel.basicPublish("", Queue.WORK_QUEUE.name(), persistentTextPlain, message.getBytes());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
         }
     }
 

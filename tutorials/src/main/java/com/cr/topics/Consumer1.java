@@ -1,26 +1,27 @@
 package com.cr.topics;
 
-import com.cr.Exchange;
-import com.cr.Queue;
 import com.cr.RabbitMQConnection;
+import com.cr.constant.Exchange;
+import com.cr.constant.Queue;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.DeliverCallback;
 
 import java.io.IOException;
 
 public class Consumer1 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Connection connection = RabbitMQConnection.getInstance();
-        try {
-            Channel channel = connection.createChannel();
-            channel.queueDeclare(Queue.TOPICS_QUEUE_1.name(), false, false, false, null);
-            channel.queueBind(Queue.TOPICS_QUEUE_1.name(), Exchange.TOPICS_EXCHANGE.name(), "1.#");
-            channel.queueBind(Queue.TOPICS_QUEUE_1.name(), Exchange.TOPICS_EXCHANGE.name(), "3.#");
-            channel.basicConsume(Queue.TOPICS_QUEUE_1.name(), true, (consumerTag, delivery) -> System.out.println(new String(delivery.getBody())), consumerTag -> {});
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Channel channel = connection.createChannel();
+        channel.queueDeclare(Queue.TOPICS_QUEUE_1.name(), true, false, false, null);
+        channel.queueBind(Queue.TOPICS_QUEUE_1.name(), Exchange.TOPICS_EXCHANGE.name(), "*.*.rabbit");
+        channel.queueBind(Queue.TOPICS_QUEUE_1.name(), Exchange.TOPICS_EXCHANGE.name(), "lazy.#");
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+            String message = new String(delivery.getBody());
+            System.out.println(message);
+        };
+        channel.basicConsume(Queue.TOPICS_QUEUE_1.name(), true, deliverCallback, consumerTag -> { });
     }
 
 }

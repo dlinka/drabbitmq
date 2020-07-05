@@ -1,4 +1,4 @@
-package com.cr;
+package com.cr.constant;
 
 public enum Exchange {
 
